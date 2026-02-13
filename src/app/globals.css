@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── Tailwind v4 theme tokens ── */
+@theme inline {
+  /* Colors mapped from shadcn CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Radii */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Fonts — Fraunces (serif) + Space Grotesk (sans) */
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+/* ── Single dark palette — no light theme ── */
+:root {
+  --radius: 1rem;
+
+  /* Night / velvet background */
+  --background: #050508;
+  --foreground: #f3eee6;
+
+  /* Card = ink */
+  --card: #0b0b12;
+  --card-foreground: #f3eee6;
+
+  /* Popover = ink */
+  --popover: #0b0b12;
+  --popover-foreground: #f3eee6;
+
+  /* Primary = ivory on night */
+  --primary: #f3eee6;
+  --primary-foreground: #050508;
+
+  /* Secondary = ink */
+  --secondary: #0b0b12;
+  --secondary-foreground: #f3eee6;
+
+  /* Muted = ink with softer foreground */
+  --muted: #0b0b12;
+  --muted-foreground: rgba(243, 238, 230, 0.55);
+
+  /* Accent = ink */
+  --accent: #0b0b12;
+  --accent-foreground: #f3eee6;
+
+  /* Destructive = rose */
+  --destructive: #e11d48;
+
+  /* Borders & inputs = mist */
+  --border: rgba(243, 238, 230, 0.10);
+  --input: rgba(243, 238, 230, 0.15);
+
+  /* Ring = champagne */
+  --ring: #e7c9a9;
+}
+
+/* ── Film grain animation ── */
+@keyframes grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -5% -10%; }
+  30% { background-position: 3% -15%; }
+  50% { background-position: 12% 9%; }
+  70% { background-position: 9% 4%; }
+  90% { background-position: -1% 7%; }
+}
+
+@utility animate-grain {
+  animation: grain 8s steps(10) infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
